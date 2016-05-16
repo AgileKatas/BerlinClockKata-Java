@@ -1,10 +1,13 @@
 package uk.co.agilekatas.katas.berlinclock;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(Enclosed.class)
 public class BerlinClockTest {
@@ -14,58 +17,60 @@ public class BerlinClockTest {
     private static final int SINGLE_ROW_START = 20;
     private static final int SINGLE_ROW_END = 24;
 
+    private final BerlinClock clock = new BerlinClock();
+
     @Test
-    public void minutesEndingInZeroHaveNoLights() {
-      BerlinClock clock = new BerlinClock();
+    public void noLampsShowForMinutesEndingInZeroMinutesOrFiveMinutes() {
+      List<String> noLampExamples = Arrays.asList("00:00:00", "00:05:00", "00:10:00", "00:15:00");
 
-      String singleMinutes = clock.convert("12:00:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("OOOO");
+      for (String example : noLampExamples) {
+        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        assertThat(singleMinutes).isEqualTo("OOOO");
+      }
     }
 
     @Test
-    public void minutesEndingInOneHaveOneLight() {
-      BerlinClock clock = new BerlinClock();
+    public void oneLampShowsForMinutesEndingInOneMinuteOrSixMinutes() {
+      List<String> oneLampExamples = Arrays.asList("00:01:00", "00:06:00", "00:11:00", "00:16:00");
 
-      String singleMinutes = clock.convert("12:01:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("YOOO");
+      for (String example : oneLampExamples) {
+        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        assertThat(singleMinutes).isEqualTo("YOOO");
+      }
     }
 
     @Test
-    public void minutesEndingInTwoHaveTwoLights() {
-      BerlinClock clock = new BerlinClock();
+    public void twoLampsShowForMinutesEndingInTwoMinutesOrSevenMinutes() {
+      List<String> twoLampExamples = Arrays.asList("00:02:00", "00:07:00", "00:12:00", "00:17:00");
 
-      String singleMinutes = clock.convert("12:02:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("YYOO");
+      for (String example : twoLampExamples) {
+        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        assertThat(singleMinutes).isEqualTo("YYOO");
+      }
     }
 
     @Test
-    public void minutesEndingInThreeHaveThreeLights() {
-      BerlinClock clock = new BerlinClock();
+    public void threeLampsShowForMinutesEndingInThreeMinutesOrEightMinutes() {
+      List<String> threeLampExamples = Arrays.asList("00:03:00", "00:08:00", "00:13:00", "00:18:00");
 
-      String singleMinutes = clock.convert("12:03:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("YYYO");
+      for (String example : threeLampExamples) {
+        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        assertThat(singleMinutes).isEqualTo("YYYO");
+      }
     }
 
     @Test
-    public void minutesEndingInFourHaveFourLights() {
-      BerlinClock clock = new BerlinClock();
+    public void fourLampsShowForMinutesEndingInFourMinutesOrNineMinutes() {
+      List<String> fourLampExamples = Arrays.asList("00:04:00", "00:09:00", "00:14:00", "00:19:00");
 
-      String singleMinutes = clock.convert("12:04:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("YYYY");
+      for (String example : fourLampExamples) {
+        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        assertThat(singleMinutes).isEqualTo("YYYY");
+      }
     }
 
-    @Test
-    public void minutesEndingInFiveHaveZeroLights() {
-      BerlinClock clock = new BerlinClock();
-
-      String singleMinutes = clock.convert("12:05:00").substring(SINGLE_ROW_START, SINGLE_ROW_END);
-
-      assertThat(singleMinutes).isEqualTo("OOOO");
+    private String getSingleMinutesRow(String time) {
+      return time.substring(SINGLE_ROW_START, SINGLE_ROW_END);
     }
 
   }
