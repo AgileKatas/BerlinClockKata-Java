@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(Enclosed.class)
 public class BerlinClockTest {
 
-  public static class SingleMinutes {
+  public static class SingleMinutesRow {
 
     private static final int SINGLE_ROW_START = 20;
     private static final int SINGLE_ROW_END = 24;
@@ -20,7 +20,7 @@ public class BerlinClockTest {
     private final BerlinClock clock = new BerlinClock();
 
     @Test
-    public void noLampsShowForMinutesEndingInZeroMinutesOrFiveMinutes() {
+    public void showsNoLampsForMinutesEndingInZeroMinutesOrFiveMinutes() {
       List<String> noLampExamples = Arrays.asList("00:00:00", "00:05:00", "00:10:00", "00:15:00");
 
       for (String example : noLampExamples) {
@@ -30,7 +30,7 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void oneLampShowsForMinutesEndingInOneMinuteOrSixMinutes() {
+    public void showsOneLampForMinutesEndingInOneMinuteOrSixMinutes() {
       List<String> oneLampExamples = Arrays.asList("00:01:00", "00:06:00", "00:11:00", "00:16:00");
 
       for (String example : oneLampExamples) {
@@ -40,7 +40,7 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void twoLampsShowForMinutesEndingInTwoMinutesOrSevenMinutes() {
+    public void showsTwoLampsForMinutesEndingInTwoMinutesOrSevenMinutes() {
       List<String> twoLampExamples = Arrays.asList("00:02:00", "00:07:00", "00:12:00", "00:17:00");
 
       for (String example : twoLampExamples) {
@@ -50,7 +50,7 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void threeLampsShowForMinutesEndingInThreeMinutesOrEightMinutes() {
+    public void showsThreeLampsForMinutesEndingInThreeMinutesOrEightMinutes() {
       List<String> threeLampExamples = Arrays.asList("00:03:00", "00:08:00", "00:13:00", "00:18:00");
 
       for (String example : threeLampExamples) {
@@ -60,7 +60,7 @@ public class BerlinClockTest {
     }
 
     @Test
-    public void fourLampsShowForMinutesEndingInFourMinutesOrNineMinutes() {
+    public void showsFourLampsForMinutesEndingInFourMinutesOrNineMinutes() {
       List<String> fourLampExamples = Arrays.asList("00:04:00", "00:09:00", "00:14:00", "00:19:00");
 
       for (String example : fourLampExamples) {
