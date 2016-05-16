@@ -3,11 +3,11 @@ package uk.co.agilekatas.katas.berlinclock;
 public class BerlinClock {
 
   public String convert(String time) {
-    String base = "OOOOOOOOOOOOOOOOOOOO";
+    StringBuilder base = new StringBuilder("OOOOOOOOOOOOOOOOOOOO");
 
     String singleMinutes = calculateSingleMinutes(time);
 
-    return base + singleMinutes;
+    return base.append(singleMinutes).toString();
   }
 
   private String calculateSingleMinutes(String time) {
