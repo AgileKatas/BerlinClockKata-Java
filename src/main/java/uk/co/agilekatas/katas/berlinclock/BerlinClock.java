@@ -21,7 +21,7 @@ public class BerlinClock {
     int lampsToTurnOn = minutes / 5;
     for (int i = 1; i <= 11; i++) {
       if (lampsToTurnOn > 0) {
-        if (i % 3 == 0) {
+        if (isRedLamp(i)) {
           row.append(RED_LAMP);
         } else {
           row.append(YELLOW_LAMP);
@@ -33,6 +33,10 @@ public class BerlinClock {
     }
 
     return row.toString();
+  }
+
+  private boolean isRedLamp(int i) {
+    return i % 3 == 0;
   }
 
   private String calculateSingleMinutes(String time) {
