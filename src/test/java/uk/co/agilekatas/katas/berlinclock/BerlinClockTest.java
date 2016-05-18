@@ -207,5 +207,67 @@ public class BerlinClockTest {
     }
 
   }
+  public static class SingleHoursRow {
+
+    private static final int SINGLE_HOURS_ROW_START = 5;
+    private static final int SINGLE_HOURS_ROW_END = 9;
+
+    private final BerlinClock clock = new BerlinClock();
+
+    @Test
+    public void showsNoLampsForHoursEndingInZeroHoursOrFiveHours() {
+      List<String> noLampExamples = Arrays.asList("00:00:00", "05:00:00", "10:00:00", "15:00:00", "20:00:00");
+
+      for (String example : noLampExamples) {
+        String singleHours = getSingleHoursRow(clock.convert(example));
+        assertThat(singleHours).isEqualTo("OOOO");
+      }
+    }
+
+    @Test
+    public void showsOneLampForHoursEndingInOneHourOrSixHours() {
+      List<String> oneLampExamples = Arrays.asList("01:00:00", "06:00:00", "11:00:00", "16:00:00", "21:00:00");
+
+      for (String example : oneLampExamples) {
+        String singleHours = getSingleHoursRow(clock.convert(example));
+        assertThat(singleHours).isEqualTo("ROOO");
+      }
+    }
+
+    @Test
+    public void showsTwoLampsForHoursEndingInTwoHoursOrSevenHours() {
+      List<String> twoLampExamples = Arrays.asList("02:00:00", "07:00:00", "12:00:00", "17:00:00", "22:00:00");
+
+      for (String example : twoLampExamples) {
+        String singleHours = getSingleHoursRow(clock.convert(example));
+        assertThat(singleHours).isEqualTo("RROO");
+      }
+    }
+
+    @Test
+    public void showsThreeLampsForHoursEndingInThreeHoursOrEightHours() {
+      List<String> threeLampExamples = Arrays.asList("03:00:00", "08:00:00", "13:00:00", "18:00:00", "23:00:00");
+
+      for (String example : threeLampExamples) {
+        String singleHours = getSingleHoursRow(clock.convert(example));
+        assertThat(singleHours).isEqualTo("RRRO");
+      }
+    }
+
+    @Test
+    public void showsFourLampsForHoursEndingInFourHoursOrNineHours() {
+      List<String> fourLampExamples = Arrays.asList("04:00:00", "09:00:00", "14:00:00", "19:00:00");
+
+      for (String example : fourLampExamples) {
+        String singleHours = getSingleHoursRow(clock.convert(example));
+        assertThat(singleHours).isEqualTo("RRRR");
+      }
+    }
+
+    private String getSingleHoursRow(String time) {
+      return time.substring(SINGLE_HOURS_ROW_START, SINGLE_HOURS_ROW_END);
+    }
+
+  }
 
 }

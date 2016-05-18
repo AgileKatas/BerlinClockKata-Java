@@ -34,4 +34,8 @@ public class BerlinClockSteps {
     assertThat(berlinTime.substring(9, 20)).isEqualTo(row);
   }
 
+  @Then("^^([^\"]*) is returned for the single hours row$")
+  public void _row_is_returned_for_the_single_hours_row(String row) throws Throwable {
+    assertThat(berlinTime.substring(5, 9)).isEqualTo(row);
+  }
 }

@@ -7,12 +7,29 @@ public class BerlinClock {
   private static final String OFF_LAMP = "O";
 
   public String convert(String time) {
-    StringBuilder base = new StringBuilder("OOOOOOOOO");
+    StringBuilder base = new StringBuilder("OOOOO");
 
+    String singleHours = calculateSingleHours(time);
     String fiveMinutes = calculateFiveMinutes(time);
     String singleMinutes = calculateSingleMinutes(time);
 
-    return base.append(fiveMinutes).append(singleMinutes).toString();
+    return base.append(singleHours).append(fiveMinutes).append(singleMinutes).toString();
+  }
+
+  private String calculateSingleHours(String time) {
+    StringBuilder row = new StringBuilder();
+    int hours = Integer.parseInt(time.split(":")[0]);
+    int lampsToTurnOn = hours % 5;
+    for (int i = 1; i <=4; i++) {
+      if (lampsToTurnOn > 0) {
+        row.append(RED_LAMP);
+        lampsToTurnOn--;
+      } else {
+        row.append(OFF_LAMP);
+      }
+    }
+
+    return row.toString();
   }
 
   private String calculateFiveMinutes(String time) {
