@@ -14,8 +14,8 @@ public class BerlinClockTest {
 
   public static class SingleMinutesRow {
 
-    private static final int SINGLE_ROW_START = 20;
-    private static final int SINGLE_ROW_END = 24;
+    private static final int ROW_START = 20;
+    private static final int ROW_END = 24;
 
     private final BerlinClock clock = new BerlinClock();
 
@@ -24,7 +24,7 @@ public class BerlinClockTest {
       List<String> noLampExamples = Arrays.asList("00:00:00", "00:05:00", "00:10:00", "00:15:00");
 
       for (String example : noLampExamples) {
-        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        String singleMinutes = getRow(clock.convert(example));
         assertThat(singleMinutes).isEqualTo("OOOO");
       }
     }
@@ -34,7 +34,7 @@ public class BerlinClockTest {
       List<String> oneLampExamples = Arrays.asList("00:01:00", "00:06:00", "00:11:00", "00:16:00");
 
       for (String example : oneLampExamples) {
-        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        String singleMinutes = getRow(clock.convert(example));
         assertThat(singleMinutes).isEqualTo("YOOO");
       }
     }
@@ -44,7 +44,7 @@ public class BerlinClockTest {
       List<String> twoLampExamples = Arrays.asList("00:02:00", "00:07:00", "00:12:00", "00:17:00");
 
       for (String example : twoLampExamples) {
-        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        String singleMinutes = getRow(clock.convert(example));
         assertThat(singleMinutes).isEqualTo("YYOO");
       }
     }
@@ -54,7 +54,7 @@ public class BerlinClockTest {
       List<String> threeLampExamples = Arrays.asList("00:03:00", "00:08:00", "00:13:00", "00:18:00");
 
       for (String example : threeLampExamples) {
-        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        String singleMinutes = getRow(clock.convert(example));
         assertThat(singleMinutes).isEqualTo("YYYO");
       }
     }
@@ -64,21 +64,21 @@ public class BerlinClockTest {
       List<String> fourLampExamples = Arrays.asList("00:04:00", "00:09:00", "00:14:00", "00:19:00");
 
       for (String example : fourLampExamples) {
-        String singleMinutes = getSingleMinutesRow(clock.convert(example));
+        String singleMinutes = getRow(clock.convert(example));
         assertThat(singleMinutes).isEqualTo("YYYY");
       }
     }
 
-    private String getSingleMinutesRow(String time) {
-      return time.substring(SINGLE_ROW_START, SINGLE_ROW_END);
+    private String getRow(String time) {
+      return time.substring(ROW_START, ROW_END);
     }
 
   }
 
   public static class FiveMinutesRow {
 
-    private static final int FIVE_MINUTES_ROW_START = 9;
-    private static final int FIVE_MINUTES_ROW_END = 20;
+    private static final int ROW_START = 9;
+    private static final int ROW_END = 20;
 
     private final BerlinClock clock = new BerlinClock();
 
@@ -87,7 +87,7 @@ public class BerlinClockTest {
       List<String> noLampExamples = Arrays.asList("00:00:00", "00:01:00", "00:02:00", "00:03:00", "00:04:00");
 
       for (String example : noLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("OOOOOOOOOOO");
       }
     }
@@ -97,7 +97,7 @@ public class BerlinClockTest {
       List<String> oneLampExamples = Arrays.asList("00:05:00", "00:06:00", "00:07:00", "00:08:00", "00:09:00");
 
       for (String example : oneLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YOOOOOOOOOO");
       }
     }
@@ -107,7 +107,7 @@ public class BerlinClockTest {
       List<String> twoLampExamples = Arrays.asList("00:10:00", "00:11:00", "00:12:00", "00:13:00", "00:14:00");
 
       for (String example : twoLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYOOOOOOOOO");
       }
     }
@@ -117,7 +117,7 @@ public class BerlinClockTest {
       List<String> threeLampExamples = Arrays.asList("00:15:00", "00:16:00", "00:17:00", "00:18:00", "00:19:00");
 
       for (String example : threeLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYROOOOOOOO");
       }
     }
@@ -127,7 +127,7 @@ public class BerlinClockTest {
       List<String> fourLampExamples = Arrays.asList("00:20:00", "00:21:00", "00:22:00", "00:23:00", "00:24:00");
 
       for (String example : fourLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYOOOOOOO");
       }
     }
@@ -137,7 +137,7 @@ public class BerlinClockTest {
       List<String> fiveLampExamples = Arrays.asList("00:25:00", "00:26:00", "00:27:00", "00:28:00", "00:29:00");
 
       for (String example : fiveLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYOOOOOO");
       }
     }
@@ -147,7 +147,7 @@ public class BerlinClockTest {
       List<String> sixLampExamples = Arrays.asList("00:30:00", "00:31:00", "00:32:00", "00:33:00", "00:34:00");
 
       for (String example : sixLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYROOOOO");
       }
     }
@@ -157,7 +157,7 @@ public class BerlinClockTest {
       List<String> sevenLampExamples = Arrays.asList("00:35:00", "00:36:00", "00:37:00", "00:38:00", "00:39:00");
 
       for (String example : sevenLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYRYOOOO");
       }
     }
@@ -167,7 +167,7 @@ public class BerlinClockTest {
       List<String> eightLampExamples = Arrays.asList("00:40:00", "00:41:00", "00:42:00", "00:43:00", "00:44:00");
 
       for (String example : eightLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYRYYOOO");
       }
     }
@@ -177,7 +177,7 @@ public class BerlinClockTest {
       List<String> nineLampExamples = Arrays.asList("00:45:00", "00:46:00", "00:47:00", "00:48:00", "00:49:00");
 
       for (String example : nineLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYRYYROO");
       }
     }
@@ -187,7 +187,7 @@ public class BerlinClockTest {
       List<String> tenLampExamples = Arrays.asList("00:50:00", "00:51:00", "00:52:00", "00:53:00", "00:54:00");
 
       for (String example : tenLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYRYYRYO");
       }
     }
@@ -197,20 +197,21 @@ public class BerlinClockTest {
       List<String> elevenLampExamples = Arrays.asList("00:55:00", "00:56:00", "00:57:00", "00:58:00", "00:59:00");
 
       for (String example : elevenLampExamples) {
-        String fiveMinutes = getFiveMinutesRow(clock.convert(example));
+        String fiveMinutes = getRow(clock.convert(example));
         assertThat(fiveMinutes).isEqualTo("YYRYYRYYRYY");
       }
     }
 
-    private String getFiveMinutesRow(String time) {
-      return time.substring(FIVE_MINUTES_ROW_START, FIVE_MINUTES_ROW_END);
+    private String getRow(String time) {
+      return time.substring(ROW_START, ROW_END);
     }
 
   }
+
   public static class SingleHoursRow {
 
-    private static final int SINGLE_HOURS_ROW_START = 5;
-    private static final int SINGLE_HOURS_ROW_END = 9;
+    private static final int ROW_START = 5;
+    private static final int ROW_END = 9;
 
     private final BerlinClock clock = new BerlinClock();
 
@@ -219,7 +220,7 @@ public class BerlinClockTest {
       List<String> noLampExamples = Arrays.asList("00:00:00", "05:00:00", "10:00:00", "15:00:00", "20:00:00");
 
       for (String example : noLampExamples) {
-        String singleHours = getSingleHoursRow(clock.convert(example));
+        String singleHours = getRow(clock.convert(example));
         assertThat(singleHours).isEqualTo("OOOO");
       }
     }
@@ -229,7 +230,7 @@ public class BerlinClockTest {
       List<String> oneLampExamples = Arrays.asList("01:00:00", "06:00:00", "11:00:00", "16:00:00", "21:00:00");
 
       for (String example : oneLampExamples) {
-        String singleHours = getSingleHoursRow(clock.convert(example));
+        String singleHours = getRow(clock.convert(example));
         assertThat(singleHours).isEqualTo("ROOO");
       }
     }
@@ -239,7 +240,7 @@ public class BerlinClockTest {
       List<String> twoLampExamples = Arrays.asList("02:00:00", "07:00:00", "12:00:00", "17:00:00", "22:00:00");
 
       for (String example : twoLampExamples) {
-        String singleHours = getSingleHoursRow(clock.convert(example));
+        String singleHours = getRow(clock.convert(example));
         assertThat(singleHours).isEqualTo("RROO");
       }
     }
@@ -249,7 +250,7 @@ public class BerlinClockTest {
       List<String> threeLampExamples = Arrays.asList("03:00:00", "08:00:00", "13:00:00", "18:00:00", "23:00:00");
 
       for (String example : threeLampExamples) {
-        String singleHours = getSingleHoursRow(clock.convert(example));
+        String singleHours = getRow(clock.convert(example));
         assertThat(singleHours).isEqualTo("RRRO");
       }
     }
@@ -259,13 +260,13 @@ public class BerlinClockTest {
       List<String> fourLampExamples = Arrays.asList("04:00:00", "09:00:00", "14:00:00", "19:00:00");
 
       for (String example : fourLampExamples) {
-        String singleHours = getSingleHoursRow(clock.convert(example));
+        String singleHours = getRow(clock.convert(example));
         assertThat(singleHours).isEqualTo("RRRR");
       }
     }
 
-    private String getSingleHoursRow(String time) {
-      return time.substring(SINGLE_HOURS_ROW_START, SINGLE_HOURS_ROW_END);
+    private String getRow(String time) {
+      return time.substring(ROW_START, ROW_END);
     }
 
   }
