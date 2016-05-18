@@ -7,20 +7,12 @@ public class BerlinClock {
   private static final String OFF_LAMP = "O";
 
   public String convert(String time) {
-    StringBuilder base = new StringBuilder();
-
-    String secondsLamp = calculateSecondsLamp(time);
-    String fiveHours = calculateFiveHours(time);
-    String singleHours = calculateSingleHours(time);
-    String fiveMinutes = calculateFiveMinutes(time);
-    String singleMinutes = calculateSingleMinutes(time);
-
-    return base
-        .append(secondsLamp)
-        .append(fiveHours)
-        .append(singleHours)
-        .append(fiveMinutes)
-        .append(singleMinutes)
+    return new StringBuilder()
+        .append(calculateSecondsLamp(time))
+        .append(calculateFiveHours(time))
+        .append(calculateSingleHours(time))
+        .append(calculateFiveMinutes(time))
+        .append(calculateSingleMinutes(time))
         .toString();
   }
 
