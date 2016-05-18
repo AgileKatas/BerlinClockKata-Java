@@ -333,5 +333,37 @@ public class BerlinClockTest {
     }
 
   }
+  public static class SecondsLamp {
+
+    private static final int ROW_START = 0;
+    private static final int ROW_END = 1;
+
+    private final BerlinClock clock = new BerlinClock();
+
+    @Test
+    public void isOffForOddSeconds() {
+      List<String> examples = Arrays.asList("00:00:01", "00:00:03", "00:00:05", "00:00:17", "00:00:59");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("O");
+      }
+    }
+
+    @Test
+    public void isOnForEvenSeconds() {
+      List<String> examples = Arrays.asList("00:00:02", "00:00:04", "00:00:06", "00:00:18", "00:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("R");
+      }
+    }
+
+    private String getRow(String time) {
+      return time.substring(ROW_START, ROW_END);
+    }
+
+  }
 
 }

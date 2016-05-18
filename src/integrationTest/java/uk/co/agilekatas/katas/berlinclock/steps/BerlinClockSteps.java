@@ -43,4 +43,9 @@ public class BerlinClockSteps {
   public void _row_is_returned_for_the_five_hours_row(String row) {
     assertThat(berlinTime.substring(1, 5)).isEqualTo(row);
   }
+
+  @Then("^^([^\"]*) is returned for the seconds lamp$")
+  public void lamp_is_returned_for_the_seconds_lamp(String lamp) {
+    assertThat(berlinTime.substring(0, 1)).isEqualTo(lamp);
+  }
 }
