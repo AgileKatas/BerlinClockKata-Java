@@ -333,6 +333,7 @@ public class BerlinClockTest {
     }
 
   }
+
   public static class SecondsLamp {
 
     private static final int ROW_START = 0;

@@ -18,7 +18,7 @@ public class BerlinClock {
 
   private String calculateSecondsLamp(String time) {
     int seconds = Integer.parseInt(time.split(":")[2]);
-    return seconds % 2 == 0 ? "Y" : "O";
+    return seconds % 2 == 0 ? YELLOW_LAMP : OFF_LAMP;
   }
 
   private String calculateFiveHours(String time) {
