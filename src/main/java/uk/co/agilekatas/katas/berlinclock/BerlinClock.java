@@ -20,7 +20,7 @@ public class BerlinClock {
     StringBuilder row = new StringBuilder();
     int hours = Integer.parseInt(time.split(":")[0]);
     int lampsToTurnOn = hours % 5;
-    for (int i = 1; i <=4; i++) {
+    for (int i = 1; i <= 4; i++) {
       if (lampsToTurnOn > 0) {
         row.append(RED_LAMP);
         lampsToTurnOn--;
@@ -60,16 +60,14 @@ public class BerlinClock {
     StringBuilder row = new StringBuilder();
     int minutes = Integer.parseInt(time.split(":")[1]);
     int lampsToTurnOn = minutes % 5;
-
-    while (lampsToTurnOn > 0) {
-      row.append(YELLOW_LAMP);
-      lampsToTurnOn -= 1;
+    for (int i = 1; i <= 4; i++) {
+      if (lampsToTurnOn > 0) {
+        row.append(YELLOW_LAMP);
+        lampsToTurnOn--;
+      } else {
+        row.append(OFF_LAMP);
+      }
     }
-
-    while (row.length() < 4) {
-      row.append(OFF_LAMP);
-    }
-
     return row.toString();
   }
 
