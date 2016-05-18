@@ -271,4 +271,67 @@ public class BerlinClockTest {
 
   }
 
+  public static class FiveHoursRow {
+
+    private static final int ROW_START = 1;
+    private static final int ROW_END = 5;
+
+    private final BerlinClock clock = new BerlinClock();
+
+    @Test
+    public void showsNoLampsForHoursBetweenZeroAndFive() {
+      List<String> examples = Arrays.asList("00:00:00", "01:00:00", "02:00:00", "03:00:00", "04:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("OOOO");
+      }
+    }
+
+    @Test
+    public void showsOneLampForHoursBetweenFiveAndTen() {
+      List<String> examples = Arrays.asList("05:00:00", "06:00:00", "07:00:00", "08:00:00", "09:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("ROOO");
+      }
+    }
+
+    @Test
+    public void showsTwoLampsForHoursBetweenTenAndFifteen() {
+      List<String> examples = Arrays.asList("10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("RROO");
+      }
+    }
+
+    @Test
+    public void showsThreeLampsForHoursBetweenFifteenAndTwenty() {
+      List<String> examples = Arrays.asList("15:00:00", "16:00:00", "17:00:00", "18:00:00", "19:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("RRRO");
+      }
+    }
+
+    @Test
+    public void showsFourLampsForHoursBetweenTwentyAndTwentyFour() {
+      List<String> examples = Arrays.asList("20:00:00", "21:00:00", "22:00:00", "23:00:00");
+
+      for (String example : examples) {
+        String row = getRow(clock.convert(example));
+        assertThat(row).isEqualTo("RRRR");
+      }
+    }
+
+    private String getRow(String time) {
+      return time.substring(ROW_START, ROW_END);
+    }
+
+  }
+
 }
