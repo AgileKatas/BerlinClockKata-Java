@@ -11,7 +11,7 @@ Feature: Integrate the Entire Berlin Clock
 
     Examples:
       | time     | clock                    |
-      | 00:00:00 | ROOOOOOOOOOOOOOOOOOOOOOO |
+      | 00:00:00 | YOOOOOOOOOOOOOOOOOOOOOOO |
       | 23:59:59 | ORRRRRRROYYRYYRYYRYYYYYY |
-      | 16:50:06 | RRRROROOOYYRYYRYYRYOOOOO |
+      | 16:50:06 | YRRROROOOYYRYYRYYRYOOOOO |
       | 11:37:01 | ORROOROOOYYRYYRYOOOOYYOO |

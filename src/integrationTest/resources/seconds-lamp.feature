@@ -11,5 +11,5 @@ Feature: Implement the Seconds Lamp
 
     Examples:
       | time     | lamp |
-      | 00:00:00 | R    |
+      | 00:00:00 | Y    |
       | 23:59:59 | O    |

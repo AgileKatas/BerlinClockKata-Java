@@ -356,7 +356,7 @@ public class BerlinClockTest {
 
       for (String example : examples) {
         String row = getRow(clock.convert(example));
-        assertThat(row).isEqualTo("R");
+        assertThat(row).isEqualTo("Y");
       }
     }
 
